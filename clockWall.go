@@ -14,11 +14,6 @@ func mustCopy(dst io.Writer, src io.Reader) {
 	}
 }
 
-/*func outClock(conn net.Conn) {
-	defer conn.Close()
-	mustCopy(os.Stdout, conn)
-}*/
-
 func main() {
 	ch := make(chan int, 3)
 
@@ -27,7 +22,6 @@ func main() {
 		for j := 0; j <= len(input)-1; j++ {
 			if input[j:j+1] == "=" {
 				go func() {
-					fmt.Printf("jasda", input[j+1:len(input)])
 					conn, err := net.Dial("tcp", input[j+1:len(input)])
 					if err != nil {
 						fmt.Println("f")
@@ -43,4 +37,5 @@ func main() {
 
 	}
 	<-ch
+	close(ch)
 }
