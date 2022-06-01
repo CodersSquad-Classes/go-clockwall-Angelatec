@@ -39,7 +39,7 @@ func main() {
 	}
 	name := os.Getenv("TZ")
 	fmt.Println("Aux", name)
-	port := "localhost:" + os.Args[2]
+	port := "0.0.0.0:" + os.Args[2]
 	listener, err := net.Listen("tcp", port)
 	if err != nil {
 		log.Fatal(err)
